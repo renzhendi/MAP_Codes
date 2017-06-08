@@ -22,7 +22,7 @@ tic
 % ortho = 3: SOMP
 % ortho = 4: RA-SOMP
 % ortho = 5: SCoSaMP
-% ortho = 6: RA-SCoSaMP
+% ortho = 6: Sp-SCoSaMP
 % ortho = 7: NIHT
 ortho = 1;    % define which support selection technique to use
 n = 512;      % perform your tests for n=512

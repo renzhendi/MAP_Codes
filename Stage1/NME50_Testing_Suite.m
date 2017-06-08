@@ -23,9 +23,9 @@ tic
 % ortho = 3: SOMP
 % ortho = 4: RA-SOMP
 % ortho = 5: SCoSaMP
-% ortho = 6: RA-SCoSaMP
+% ortho = 6: Sp-SCoSaMP
 % ortho = 7: NIHT
-ortho = 1;           % define which support selection technique to use
+ortho = 2;           % define which support selection technique to use
 n = 512;             % perform your tests for n=512
 rnk_list = [5 8 10 16 20 32 40 48 56 64]; % enter the ranks to be collected
 distr = 1;           % distribution of x: 0 rand; 1 sign; 2 randn
