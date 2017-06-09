@@ -27,7 +27,7 @@ tic
 % ortho = 7: NIHT
 ortho = 2;           % define which support selection technique to use
 n = 512;             % perform your tests for n=512
-rnk_list = [5 8 10 16 20 32 40 48 56 64]; % enter the ranks to be collected
+rnk_list = [1 2 4 5 8 10 16 20 32 40 64]; % enter the ranks to be collected
 distr = 1;           % distribution of x: 0 rand; 1 sign; 2 randn
 plots = 0;           % 0 no plots; 1 save plots
 
@@ -44,7 +44,6 @@ delta_list = delta_scale:delta_scale:1;
 delta_total = length(delta_list);
 rho_list = rho_scale:rho_scale:1;
 rho_total = length(rho_list);
-rho_min = 0;
 
 switch ortho % Alg_name used for plots
     case 1
@@ -71,6 +70,7 @@ end
 
 for ppp = 1:length(rnk_list)
     rnk = rnk_list(ppp);
+    rho_min = 0;
     results50 = zeros(rho_total, delta_total);
     
     for d = 1:delta_total
@@ -82,7 +82,7 @@ for ppp = 1:length(rnk_list)
         
         NMEavg = 1; % ensure we start the tests, but can bail out when we are always failing
         successperc = band(2);
-        r = r_min;
+        r = max(r_min,1);
         
         while successperc > band(1) && r <= rho_total
             rho = rho_list(r);

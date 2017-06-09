@@ -4,7 +4,7 @@
 % Modify the argument of addpath if necessary
 
 clear;
-addpath('C:/Users/LENOVO_PC/Documents/MATLAB/MAP-499/OrthoThresholding/PStesting/NME50');
+addpath('C:/Users/Œ‚ﬁ»ïF/Documents/MATLAB/MAP-499/FinalCodes/Data_NME50');
 
 % *************
 % * VARIABLES *
@@ -12,9 +12,9 @@ addpath('C:/Users/LENOVO_PC/Documents/MATLAB/MAP-499/OrthoThresholding/PStesting
 
 alg_name = 'RAPrincipalSupport';
 alg_name_abbr = 'RART';
-n_list = [512 1024 2048 4096];
-r_list = [5 8 10 16 20 24 32 40 48 56 64];
-row50 = zeros(1, 50); % length of delta
+n_list = [512 1024 2048];
+r_list = [1 2 4 5 8 10 16 20 32 40 64];
+rho50 = zeros(1, 50); % length of delta
 
 % *************
 % * MAIN LOOP *
@@ -26,8 +26,8 @@ for i = 1:length(n_list)
         load(sprintf('NME50_%s_n%d_r%d.mat', alg_name, n, r));
         for l = 1:50
             ind = find(results50(:,l));
-            row50(l) = mean(ind)/250;
+            rho50(l) = mean(ind)/250;
         end
-        save(sprintf('Row50_%s_n%d_r%d.mat', alg_name_abbr, n, r),'row50');
+        save(sprintf('Rho50_%s_n%d_r%d.mat', alg_name_abbr, n, r),'rho50');
     end
 end
