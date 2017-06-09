@@ -1,6 +1,6 @@
-% This testing suite outputs 250*50 matrices storing the NMEs at the 50%
-% succ curve for given algorithm, n, ranks, and distribution of x. Plots
-% are also optional.
+% This testing suite outputs 250*50 matrices storing the NMEs and empirical
+% success rate at the 50% succ curve for given algorithm, n, ranks, and 
+% distribution of x. Plots are also optional.
 %
 % It is designed to compute the NME50 at all ranks for one n-value at a
 % time, so that users can run the data of different n-values on different
@@ -71,7 +71,8 @@ end
 for ppp = 1:length(rnk_list)
     rnk = rnk_list(ppp);
     rho_min = 0;
-    results50 = zeros(rho_total, delta_total);
+    NME50 = zeros(rho_total, delta_total);
+    Succ50 = zeros(rho_total, delta_total);
     
     for d = 1:delta_total
         delta = delta_list(d);
@@ -121,14 +122,16 @@ for ppp = 1:length(rnk_list)
             % record the successes in a matrix and report the progress of the testing
             NMEavg = NumMissedEntry/(numtests-successperc);
             successperc = successperc/numtests;
-            results50(r, d) = NMEavg;
+            NME50(r, d) = NMEavg;
+            Succ50(r, d) = successperc;
             display(sprintf('Finished (delta, rho) = (%0.3f, %0.3f) @rnk=%d, succ=%0.2f, NME=%0.2f after %0.2f seconds.', delta, rho, rnk, successperc, NMEavg, toc));
             r = r + 1;
             
         end % ends rho_list loop
     end % ends delta_list loop
     
-    save(sprintf('NME50_%s_n%d_r%d.mat',alg_name,n,rnk),'results50');
+    save(sprintf('NME50_%s_n%d_r%d.mat',alg_name,n,rnk),'NME50');
+    save(sprintf('Succ50_%s_n%d_r%d.mat',alg_name,n,rnk),'Succ50');
     
     % ************************************
     % * Make Plot to Display the Results *
@@ -137,7 +140,7 @@ for ppp = 1:length(rnk_list)
     if plots
         figure(rnk)
         hold off						% make sure to delete whatever is in the previous figure
-        imagesc(delta_list,rho_list,results50); % plot the ratio of the results matrix as an image
+        imagesc(delta_list,rho_list,NME50); % plot the ratio of the results matrix as an image
         c = colorbar();					% display the color meanings in a color bar
         title(sprintf('NME50 for %s, n=%d, r=%d.', alg_name, n, rnk)) % put the title on the plot
         set(gca,'YDir','normal')        % invert the y axis direction

@@ -25,7 +25,7 @@ for i = 1:length(n_list)
         r = r_list(j);
         load(sprintf('NME50_%s_n%d_r%d.mat', alg_name, n, r));
         for l = 1:50
-            ind = find(results50(:,l));
+            ind = find(NME50(:,l));
             rho50(l) = mean(ind)/250;
         end
         save(sprintf('Rho50_%s_n%d_r%d.mat', alg_name_abbr, n, r),'rho50');
