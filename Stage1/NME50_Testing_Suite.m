@@ -25,7 +25,7 @@ tic
 % ortho = 5: SCoSaMP
 % ortho = 6: Sp-SCoSaMP
 % ortho = 7: NIHT
-ortho = 2;           % define which support selection technique to use
+ortho = 1;           % define which support selection technique to use
 n = 512;             % perform your tests for n=512
 rnk_list = [1 2 4 5 8 10 16 20 32 40 64]; % enter the ranks to be collected
 distr = 1;           % distribution of x: 0 rand; 1 sign; 2 randn
@@ -78,7 +78,7 @@ for ppp = 1:length(rnk_list)
         delta = delta_list(d);
         m=ceil(delta*n);
         
-        [rho_min,~] = bin(rnk, delta, distr, ortho, n, band(2), rho_scale, 1, rho_min-rho_scale, numtests);
+        [rho_min,~] = bin(rnk, delta, distr, ortho, n, band(2), rho_scale, 1, 0.5*rho_min, numtests);
         r_min = ceil(rho_min/rho_scale);
         
         NMEavg = 1; % ensure we start the tests, but can bail out when we are always failing
