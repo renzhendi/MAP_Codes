@@ -9,7 +9,7 @@
 
 function Rho_p = Rho_Model(Rho_b, r1, r2, n1, n2)
 
-alpha = r2/r1;
+alpha = 1; % r2/r1;
 beta = 0;
 numerator = r2*(log2(sqrt(2)*n1)+r1);
 denominator = r1*(log2(sqrt(2)*n2)+r2);

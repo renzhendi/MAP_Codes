@@ -11,8 +11,8 @@ tic % timing
 alg_name = 'RART';
 r1_list = [2 4 5 8 10 16 20 32 40 64]; % base rank list
 r2_list = [2 4 5 8 10 16 20 32 40 64]; % predicted rank list
-n1_list = [512 1024 2048];
-n2_list = [512 1024 2048];
+n1_list = [512 1024 2048 4096];
+n2_list = [512 1024 2048 4096];
 modelMAT = zeros(1000, 5);
 counter = 1;
 
