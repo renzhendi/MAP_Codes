@@ -14,7 +14,7 @@ r2_list = [2 4 5 8 10 16 20 32 40 64]; % predicted rank list
 n1_list = [512 1024 2048 4096];
 n2_list = [512 1024 2048 4096];
 modelMAT = zeros(1000, 5);
-counter = 1;
+counter = 0;
 
 for i = 1:length(n1_list)
     n1 = n1_list(i);
@@ -29,13 +29,13 @@ for i = 1:length(n1_list)
                 load(sprintf('Rho50_%s_n%d_r%d.mat',alg_name,n2,r2));
                 ratio = median(rho50./rho_p);
                 display(sprintf('(%d, %d)->(%d, %d): rho/rhoHAT=%0.4f', n1, r1, n2, r2, ratio));
-                modelMAT(counter,:) = [n1, r1, n2, r2, ratio];
                 counter = counter+1;
-                Rho_Drawing(counter, alg_name, rho50, rho_p, ratio, r1, r2, n1, n2);
+                modelMAT(counter,:) = [n1, r1, n2, r2, ratio];
+                % Rho_Drawing(counter, alg_name, rho50, rho_p, ratio, r1, r2, n1, n2);
             end
         end
     end
 end
 
-% xlswrite('nrRatioModelMAT(raw).xlsx',modelMAT(1:counter-1,:));
+xlswrite('nrRatioModelMAT(raw).xlsx',modelMAT(1:counter,:));
 sprintf('Total testing time was %0.2f seconds.',toc);
