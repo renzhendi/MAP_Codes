@@ -26,7 +26,7 @@ tic
 % ortho = 6: Sp-SCoSaMP
 % ortho = 7: NIHT
 ortho = 1;           % define which support selection technique to use
-n = 512;             % perform your tests for n=512
+n = 512;             % perform your tests for a selected n
 rnk_list = [1 2 4 5 8 10 16 20 32 40 64]; % enter the ranks to be collected
 distr = 1;           % distribution of x: 0 rand; 1 sign; 2 randn
 plots = 0;           % 0 no plots; 1 save plots
@@ -35,7 +35,7 @@ plots = 0;           % 0 no plots; 1 save plots
 % * INITIALIZATION *
 % ******************
 
-numtests = 100;      % perform 100 tests per delta rho pair, and in bin
+numtests = 25;      % perform 25 tests per delta rho pair, and in bin
 delta_scale = 0.02;  % create a list of values for delta = m/n
 rho_scale = 0.004;   % create a list of values for rho = k/m
 band = [0.47 0.53];  % percentage of success

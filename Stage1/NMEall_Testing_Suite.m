@@ -25,7 +25,7 @@ tic
 % ortho = 6: Sp-SCoSaMP
 % ortho = 7: NIHT
 ortho = 1;    % define which support selection technique to use
-n = 512;      % perform your tests for n=512
+n = 512;      % perform your tests for a selected n
 rnk = 5;      % enter the base rank
 distr = 1;    % distribution of x: 0 rand; 1 sign; 2 randn
 plots = 0;    % 0 no plots; 1 save plots
@@ -34,7 +34,7 @@ plots = 0;    % 0 no plots; 1 save plots
 % * INITIALIZATION *
 % ******************
 
-numtests = 100;       % perform 100 tests per delta rho pair, and in bin
+numtests = 50;       % perform 50 tests per delta rho pair
 delta_scale = 0.02;   % create a list of values for delta = m/n
 rho_scale = 0.004;    % create a list of values for rho = k/m
 success_tol = 0.001;  % set the L2 error we are willing to accept.
@@ -63,7 +63,8 @@ switch ortho % Alg_name used for plots
 end
 
 % Initialize the matrix in which we record our test results.
-results = zeros(rho_total, delta_total);
+NMEall = zeros(rho_total, delta_total);
+Succall = zeros(rho_total, delta_total);
 
 % *********************
 % * MAIN TESTING LOOP *
@@ -112,13 +113,15 @@ for d=1:delta_total
         % record the successes in a matrix and report the progress of the testing
         NMEavg = NumMissedEntry/(numtests-successperc);
         successperc = successperc/numtests;
-        results(r, d) = NMEavg;
+        NMEall(r, d) = NMEavg;
+        Succall(r, d) = successperc;
         display(sprintf('Finished (delta, rho) = (%0.3f, %0.3f) @rnk=%d, succ=%0.2f, NME=%0.2f after %0.2f seconds.', delta, rho, rnk, successperc, NMEavg, toc));
         
     end % ends rho_list loop
 end % ends delta_list loop
 
-save(sprintf('NMEall_%s_n%d_r%d.mat',alg_name,n,rnk),'results');
+save(sprintf('NMEall_%s_n%d_r%d.mat',alg_name,n,rnk),'NMEall');
+save(sprintf('Succall_%s_n%d_r%d.mat',alg_name,n,rnk),'Succall');
 
 % ************************************
 % * Make Plot to Display the Results *
@@ -127,7 +130,7 @@ save(sprintf('NMEall_%s_n%d_r%d.mat',alg_name,n,rnk),'results');
 if plots
     figure(rnk)
     hold off						% make sure to delete whatever is in the previous figure
-    imagesc(delta_list,rho_list,results); % plot the ratio of the results matrix as an image
+    imagesc(delta_list,rho_list,NMEall); % plot the ratio of the results matrix as an image
     c = colorbar();                 % display the color meanings in a color bar
     title(sprintf('NMEall for %s, n=%d, rank=%d.',alg_name,n,rnk)) % put the title on the plot
     set(gca,'YDir','normal')        % invert the y axis direction
