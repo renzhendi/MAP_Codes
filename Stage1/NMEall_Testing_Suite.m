@@ -34,7 +34,7 @@ plots = 0;    % 0 no plots; 1 save plots
 % * INITIALIZATION *
 % ******************
 
-numtests = 50;       % perform 50 tests per delta rho pair
+numtests = 50;        % perform 50 tests per delta rho pair
 delta_scale = 0.02;   % create a list of values for delta = m/n
 rho_scale = 0.004;    % create a list of values for rho = k/m
 success_tol = 0.001;  % set the L2 error we are willing to accept.

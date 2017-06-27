@@ -35,7 +35,7 @@ plots = 0;           % 0 no plots; 1 save plots
 % * INITIALIZATION *
 % ******************
 
-numtests = 25;      % perform 25 tests per delta rho pair, and in bin
+numtests = 25;       % perform 25 tests per delta rho pair, and in bin
 delta_scale = 0.02;  % create a list of values for delta = m/n
 rho_scale = 0.004;   % create a list of values for rho = k/m
 band = [0.47 0.53];  % percentage of success

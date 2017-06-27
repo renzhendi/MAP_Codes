@@ -9,10 +9,10 @@
 
 function Rho_p = Rho_Model(Rho_b, r1, r2, n1, n2)
 
-alpha = 1; % r2/r1;
+alpha = 1; % (C1*nu2)/(C2*nu1)
 beta = 0;
-numerator = r2*(log2(sqrt(2)*n1)+r1);
-denominator = r1*(log2(sqrt(2)*n2)+r2);
+numerator = r2*(log(2*n1)+r1);
+denominator = r1*(log(2*n2)+r2);
 coefficient = alpha^beta*(numerator/denominator);
 
 Rho_p = coefficient * Rho_b;
