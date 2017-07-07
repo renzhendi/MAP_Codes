@@ -10,8 +10,8 @@ addpath('C:/Users/Œ‚ﬁ»ïF/Documents/MATLAB/MAP-499/FinalCodes/Data_NME50');
 % * VARIABLES *
 % *************
 
-alg_name = 'RAPrincipalSupport'; % RAOmpSupport
-alg_name_abbr = 'RART';          % RAOMP
+alg_name = 'RAOmpSupport'; %'RAPrincipalSupport';
+alg_name_abbr = 'RAOMP';   %'RART';
 n_list = [512 1024 2048 4096];
 r_list = [1 2 4 5 8 10 16 20 32 40 64];
 rho50 = zeros(1, 50); % length of delta

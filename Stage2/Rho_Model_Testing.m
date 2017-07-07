@@ -12,13 +12,13 @@ tic % timing
 % * VARIABLES *
 % *************
 
-alg_name = 'RART';
-r1_list = [5 10 40]; % base rank list
-r2_list = [5 10 40]; % predicted rank list
-n1_list = [1024];% 2048 4096];
-n2_list = [1024];% 2048 4096];
+alg_name = 'RAOMP'; %'RART';
+r1_list = [2 5 10 40]; % base rank list
+r2_list = [2 5 10 40 64]; % predicted rank list
+n1_list = [512];% 1024 2048 4096];
+n2_list = [512];% 1024 2048 4096];
 plotDisp = 1;                          % 0 no plots; 1 display plots
-plotSave = 1;                          % 0 display only; 1 save plots
+plotSave = 0;                          % 0 display only; 1 save plots
 matSave = 0;                           % 0
 
 % ******************
