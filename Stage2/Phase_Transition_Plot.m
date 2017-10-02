@@ -11,10 +11,10 @@ tic % timing
 % * VARIABLES *
 % *************
 
-alg_name = 'RART'; % RAOMP
+alg_name = 'RT'; %'RART'; %'RAOMP';
 rnk_list = [1 4 16 64];
 n = 1024;
-plotSave = 0; % 0 display only; 1 save plots
+plotSave = 1; % 0 display only; 1 save plots
 
 % ******************
 % * INITIALIZATION *
